@@ -3,18 +3,30 @@
 //db.close()
 
 
-module.exports= function(models){
-	const Router=models.Router
+module.exports = function (models) {
+	const Router = models.Router
 
-//Asinhronno
+	//Asinhronno
 
-return {getAllRouters(){
-	return new Promise(function(resolve, reject){
+	return {
+		getAllRouters() {
+			return new Promise(function (resolve, reject) {
 
-		Router.find(function(err, routers){
-			if (err){reject (err)}
-			resolve(routers)
-		})
-	})
-}}
+				Router.find(function (err, routers) {
+					if (err) { reject(err) }
+					resolve(routers)
+				})
+			})
+		},
+		searchByName(pattern) {
+			let regex = new RegExp(pattern, 'i');
+
+			return new Promise(function (resolve, reject) {
+				Router.find({ 'name': regex }, function (err, routers) {
+					if (err) { reject(err) }
+					resolve(routers)
+				})
+			})
+		}
+	}
 }

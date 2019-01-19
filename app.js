@@ -47,11 +47,7 @@ app.get('/tplink', function (req, res) {
 });
 
 app.get('/routers', controllers.routerController.getAll)
-app.get('/routers/:name', function (req, res) {
-	console.log(req.params.name)
-	//!
-	return
-})
+app.get('/routers/search/:pattern',controllers.routerController.search)
 //
 
 app.get('/register', controllers.userController.registerGet);
