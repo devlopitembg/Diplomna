@@ -1,23 +1,24 @@
-const mongoose = require('mongoose');
+module.exports = function (models) {
+	const User = models.User;
 
-//User Schema
-const UserSchema = mongoose.Schema({
-	name:{
-		type: String,
-		required: true
-	},
-	email:{
-		type: String,
-		required: true
-	},
-	username:{
-		type: String,
-		required: true
-	},
-	password:{
-		type: String,
-		required: true
-	},
-})
+	return {
+		register(user) {
+			let newUser = new User({
+				name: user.name,
+				username: user.username,
+				email: user.email,
+				password: user.password
+			});
 
-const User = module.exports = mongoose.model('User', UserSchema);
+			return new Promise(function (resolve, reject) {
+				newUser.save(function (err, entry, numaffected) {
+					if(err){
+						reject(err);
+					}
+
+					resolve(entry);
+				});
+			});
+		}
+	}
+}
