@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const fs = require('fs');
+const bcrypt = require('bcryptjs');
 
 
 mongoose.connect('mongodb://localhost/stock');
@@ -46,13 +47,17 @@ app.get('/tplink', function (req, res) {
 	});
 });
 
+//
+
 app.get('/routers', controllers.routerController.getAll)
-app.get('/routers/search/:pattern',controllers.routerController.search)
+app.get('/routers/search/:pattern', controllers.routerController.search)
+
 //
 
 app.get('/register', controllers.userController.registerGet);
 app.post('/register', controllers.userController.registerPost)
 
+app.get('/login', controllers.loginController.loginGet);
 
 // app.use('/user-controller.js', users);
 

@@ -17,9 +17,10 @@ module.exports = function (data) {
 			res.render('register');
 		},
 		registerPost(req, res) {
+			//hash
 			// validation
 			userService.register(req.body).then(function (registeredUser) {
-				res.json({ success: true, message: 'user registered successful', registeredUser })
+				res.json({ success: true, message: 'User registration successful', registeredUser })
 			}, function (error) {
 				// show/log error
 			});
