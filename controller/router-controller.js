@@ -1,9 +1,12 @@
-module.exports = function (data) {
+module.exports = function ({data}) {
 	const routerService = data.routerService;
 	return {
 		getAll(req, res) {
+			let user = req.user;
+			console.log(user);
 			routerService.getAllRouters().then(function (routers) {
-				res.render('routers', { result: routers })
+				res.render('routers', { result: routers, user
+			})
 			})
 		}, 
 		search(req, res) {

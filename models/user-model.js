@@ -13,7 +13,11 @@ module.exports = function (mongoose) {
             type: String,
             required: true
         },
-        password: {
+        hash: {
+            type: String,
+            required: true
+        },
+        salt: {
             type: String,
             required: true
         },

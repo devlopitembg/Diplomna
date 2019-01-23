@@ -3,9 +3,12 @@ const path = require('path');
 const mongoose = require('mongoose');
 const fs = require('fs');
 const bcrypt = require('bcryptjs');
+const expressValidator = require('express-validator');
+const config = require('./config/database')
+const passport = require('passport');
+const session = require('express-session');
 
-
-mongoose.connect('mongodb://localhost/stock');
+mongoose.connect(config.database);
 let db = mongoose.connection;
 
 db.on('error', function (err) {
@@ -17,11 +20,44 @@ db.on('open', function () {
 
 const models = require('./models')(fs, mongoose);
 const data = require('./data')(fs, models);
-const controllers = require('./controller')(fs, data);
+const controllers = require('./controller')({ fs, data, bcrypt, passport });
 
 // Init App
 const app = express();
 app.use(express.static("public"));
+
+app.use(session({
+	cookie: { maxAge: 60000 },
+	secret: 'woot',
+	resave: false,
+	saveUninitialized: false
+}));
+
+// Express Validator Middleware
+app.use(expressValidator({
+	errorFormatter: function (param, msg, value) {
+		var namespace = param.split('.')
+			, root = namespace.shift()
+			, formParam = root;
+
+		while (namespace.length) {
+			formParam += '[' + namespace.shift() + ']';
+		}
+		return {
+			param: formParam,
+			msg: msg,
+			value: value
+		};
+	}
+}));
+
+app.use(require('connect-flash')());
+
+// Passport Config
+require('./config/passport')(passport, models);
+// Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Load view Engine
 app.set('views', path.join(__dirname, 'views'));
@@ -58,6 +94,7 @@ app.get('/register', controllers.userController.registerGet);
 app.post('/register', controllers.userController.registerPost)
 
 app.get('/login', controllers.loginController.loginGet);
+app.post('/login', controllers.loginController.loginPost);
 
 // app.use('/user-controller.js', users);
 

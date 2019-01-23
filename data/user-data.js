@@ -7,7 +7,8 @@ module.exports = function (models) {
 				name: user.name,
 				username: user.username,
 				email: user.email,
-				password: user.password
+				hash: user.hash,
+				salt: user.salt
 			});
 
 			return new Promise(function (resolve, reject) {
