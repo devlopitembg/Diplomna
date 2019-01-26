@@ -27,6 +27,52 @@ module.exports = function (models) {
 					resolve(routers)
 				})
 			})
+		},
+		create(router) {
+			var router1 = new Router(router);
+			return new Promise(function(resolve, reject){
+			router1.save(function (err, entry, numaffected) {
+				if (err) { reject(err) }
+					resolve(entry)
+			});
+		})
+		},
+		delete(id) {
+			return new Promise(function (resolve, reject) {
+				Router.deleteOne({ '_id': id}, function (err, b) {
+					if (err) { reject(err) }
+					resolve()
+				})
+			})
+		},
+		edit(id, router) {
+			console.log(router)
+			return new Promise(function(resolve, reject){
+			Router.updateOne({ '_id': id}, router, function (err, res) {
+				console.log(err, res)
+				if (err) { reject(err) }
+					resolve(res)
+				})
+			})
+		},
+		getById(id){
+			return new Promise(function(resolve, reject){
+			Router.findById(id,function(err, res){
+				if(err){reject(err)}
+				resolve(res)
+				
+			})
+			})
+		},
+		searchByName(pattern) {
+			let regex = new RegExp(pattern, 'i');
+
+			return new Promise(function (resolve, reject) {
+				Router.find({ 'tag': regex }, function (err, routers) {
+					if (err) { reject(err) }
+					resolve(routers)
+				})
+			})
 		}
 	}
 }

@@ -1,0 +1,52 @@
+extends _layout
+block   content
+    .container
+        if errors
+            each error, i in errors
+                div(class="alert alert-danger") #{error.msg}
+        h1= "Add device"
+        form(method='POST',	action='/add')
+            #form-group
+                label=	"Name:"
+                input.form-control(name='name',	type='text')
+            #form-group
+                label=	"Tag:"
+                input.form-control(name='tag',	type='text')
+            #form-group
+                label=	"Frequency:"
+                input.form-control(name='frequency',	type='text')
+            #form-group
+                label=	"Standart:"
+                input.form-control(name='standart',	type='text')
+            #form-group
+                label=	"Range:"
+                input.form-control(name='range',	type='text')
+            #form-group
+                label=	"Ports:"
+                input.form-control(name='ports',	type='text')
+            #form-group
+                label=  "Vlan:"
+                input.form-control(name='vlan',	type='number')
+            #form-group
+                label=  "Antennas:"
+                input.form-control(name='antennas', type='number')
+            #form-group
+                label=  "Manageability:"
+                input.form-control(name='manageability',    type='text')
+            #form-group
+                label=  "Fans:"
+                input.form-control(name='fans',	type='number')
+            #form-group
+                label=	"Power:"
+                input.form-control(name='power',	type='text')
+            #form-group
+                label=	"Plug:"
+                input.form-control(name='plug',	type='text')
+            #form-group
+                label=	"Price:"
+                input.form-control(name='price',	type='text')
+            #form-group
+                label=	"Date:"
+                input.form-control(name='date',	type='datetime-local')
+            br
+            input.btn.btn-primary(type='submit',	value='Submit')

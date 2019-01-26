@@ -1,0 +1,68 @@
+extends _layout
+block   content
+    .container.login
+        .card
+        .container-fliud
+        .wrapper.row
+          .preview.col-md-6
+            .preview-pic.tab-content
+              #pic-1.tab-pane.active
+                img(src='http://placekitten.com/400/252')
+              #pic-2.tab-pane
+                img(src='http://placekitten.com/400/252')
+              #pic-3.tab-pane
+                img(src='http://placekitten.com/400/252')
+              #pic-4.tab-pane
+                img(src='http://placekitten.com/400/252')
+              #pic-5.tab-pane
+                img(src='http://placekitten.com/400/252')
+            ul.preview-thumbnail.nav.nav-tabs
+              li.active
+                a(data-target='#pic-1', data-toggle='tab')
+                  img(src='http://placekitten.com/200/126')
+              li
+                a(data-target='#pic-2', data-toggle='tab')
+                  img(src='http://placekitten.com/200/126')
+              li
+                a(data-target='#pic-3', data-toggle='tab')
+                  img(src='http://placekitten.com/200/126')
+              li
+                a(data-target='#pic-4', data-toggle='tab')
+                  img(src='http://placekitten.com/200/126')
+              li
+                a(data-target='#pic-5', data-toggle='tab')
+                  img(src='http://placekitten.com/200/126')
+          .details.col-md-6
+            h3.product-title men's shoes fashion
+            .rating
+              .stars
+                span.fa.fa-star.checked
+                span.fa.fa-star.checked
+                span.fa.fa-star.checked
+                span.fa.fa-star
+                span.fa.fa-star
+              span.review-no 41 reviews
+            p.product-description
+              | Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.
+            h4.price
+              | current price: 
+              span $180
+            p.vote
+              strong 91%
+              |  of buyers enjoyed this product! 
+              strong (87 votes)
+            h5.sizes
+              | sizes:
+              span.size(data-toggle='tooltip', title='small') s
+              span.size(data-toggle='tooltip', title='medium') m
+              span.size(data-toggle='tooltip', title='large') l
+              span.size(data-toggle='tooltip', title='xtra large') xl
+            h5.colors
+              | colors:
+              span.color.orange.not-available(data-toggle='tooltip', title='Not In store')
+              span.color.green
+              span.color.blue
+            .action
+              button.add-to-cart.btn.btn-default(type='button') add to cart
+              button.like.btn.btn-default(type='button')
+                span.fa.fa-heart

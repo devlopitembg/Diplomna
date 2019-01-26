@@ -19,7 +19,7 @@ db.on('open', function () {
 });
 
 const models = require('./models')(fs, mongoose);
-const data = require('./data')(fs, models);
+const data = require('./data')(fs, models, mongoose);
 const controllers = require('./controller')({ fs, data, bcrypt, passport });
 
 // Init App
@@ -55,6 +55,7 @@ app.use(require('connect-flash')());
 
 // Passport Config
 require('./config/passport')(passport, models);
+
 // Passport Middleware
 app.use(passport.initialize());
 app.use(passport.session());
@@ -70,9 +71,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Home Route
 app.get('/', function (req, res) {
 	res.render('index', {
-		result: {
-			ar: [1, 2, 3], name: "Pesho"
-		}
+		title: 'Home'
 	});
 });
 
@@ -82,6 +81,15 @@ app.get('/tplink', function (req, res) {
 		title: 'tplink'
 	});
 });
+
+//
+
+app.get('/description', function (req, res) {
+	res.render('description', {
+		title: 'description'
+	});
+});
+
 
 //
 
@@ -96,7 +104,13 @@ app.post('/register', controllers.userController.registerPost)
 app.get('/login', controllers.loginController.loginGet);
 app.post('/login', controllers.loginController.loginPost);
 
-// app.use('/user-controller.js', users);
+app.get('/add',controllers.routerController.createGet);
+app.post('/add', controllers.routerController.createPost)
+
+app.get('/router/delete/:id',controllers.routerController.delete)
+
+app.get('/edit/:id', controllers.routerController.editGet)
+app.post('/edit', controllers.routerController.editPost)
 
 // Start Server
 app.listen(3000, function () {
