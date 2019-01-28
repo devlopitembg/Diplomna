@@ -4,8 +4,8 @@ html(lang="en")
 		meta(charset="UTF-8")
 		title Ethernity
 			block app-title
-		link(rel="stylesheet",	href="./css/main.css")
 		link(rel="stylesheet",	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css")
+		link(rel="stylesheet",	href="/css/main.css")
 	body
 		nav.navbar.sticky-top.navbar-expand-lg.navbar-dark.bg-dark
 			a.navbar-brand(href='/') Ethernity
@@ -21,10 +21,13 @@ html(lang="en")
 						a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
 							| Categories
 							.dropdown-menu(aria-labelledby='navbarDropdown')
-								a.dropdown-item(href='#') Action
-								a.dropdown-item(href='#') Another action
+								a.dropdown-item(href='#') TP-Link
+								a.dropdown-item(href='#') Linksys
+								a.dropdown-item(href='#') D-Link
+								a.dropdown-item(href='#') NETGEAR
+								a.dropdown-item(href='#') Sysco
 								.dropdown-divider
-								a.dropdown-item(href='#') Something else here
+								a.dropdown-item(href='#') All
 					li.nav-item
 						a.nav-link(href='/register') Register
 					li.nav-item
@@ -40,9 +43,9 @@ html(lang="en")
 								a(href= "/login")= "Login"
 							div
 								a(href= "/register")= "Register"
+
 						//cart?
-					li.nav-item
-						include share/cart.pug
+				include share/cart.pug
 				form.form-inline.my-2.my-lg-0
 					input.form-control.mr-sm-2(type='search', placeholder='Search', aria-label='Search')
 					button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search

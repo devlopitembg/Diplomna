@@ -8,7 +8,7 @@ const routerModelSchema = {
 	standart:String,
 	range:String,
 	ports:String,
-	vlan:Number,
+	vlan:String,
 	antennas:String,
 	manageability:String,
 	fans:String,

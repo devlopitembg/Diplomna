@@ -1,68 +1,76 @@
 extends _layout
 block   content
-    .container.login
-        .card
-        .container-fliud
-        .wrapper.row
-          .preview.col-md-6
-            .preview-pic.tab-content
-              #pic-1.tab-pane.active
-                img(src='http://placekitten.com/400/252')
-              #pic-2.tab-pane
-                img(src='http://placekitten.com/400/252')
-              #pic-3.tab-pane
-                img(src='http://placekitten.com/400/252')
-              #pic-4.tab-pane
-                img(src='http://placekitten.com/400/252')
-              #pic-5.tab-pane
-                img(src='http://placekitten.com/400/252')
-            ul.preview-thumbnail.nav.nav-tabs
-              li.active
-                a(data-target='#pic-1', data-toggle='tab')
-                  img(src='http://placekitten.com/200/126')
-              li
-                a(data-target='#pic-2', data-toggle='tab')
-                  img(src='http://placekitten.com/200/126')
-              li
-                a(data-target='#pic-3', data-toggle='tab')
-                  img(src='http://placekitten.com/200/126')
-              li
-                a(data-target='#pic-4', data-toggle='tab')
-                  img(src='http://placekitten.com/200/126')
-              li
-                a(data-target='#pic-5', data-toggle='tab')
-                  img(src='http://placekitten.com/200/126')
-          .details.col-md-6
-            h3.product-title men's shoes fashion
-            .rating
-              .stars
-                span.fa.fa-star.checked
-                span.fa.fa-star.checked
-                span.fa.fa-star.checked
-                span.fa.fa-star
-                span.fa.fa-star
-              span.review-no 41 reviews
-            p.product-description
-              | Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.
-            h4.price
-              | current price: 
-              span $180
-            p.vote
-              strong 91%
-              |  of buyers enjoyed this product! 
-              strong (87 votes)
-            h5.sizes
-              | sizes:
-              span.size(data-toggle='tooltip', title='small') s
-              span.size(data-toggle='tooltip', title='medium') m
-              span.size(data-toggle='tooltip', title='large') l
-              span.size(data-toggle='tooltip', title='xtra large') xl
-            h5.colors
-              | colors:
-              span.color.orange.not-available(data-toggle='tooltip', title='Not In store')
-              span.color.green
-              span.color.blue
-            .action
-              button.add-to-cart.btn.btn-default(type='button') add to cart
-              button.like.btn.btn-default(type='button')
-                span.fa.fa-heart
+    .container
+      section.jumbotron.text-center
+        .container
+          h1.jumbotron-heading RT-AC5300
+          p.lead.text-muted.mb-0
+            | Tri-Band Wi-Fi Gigabit Router For Gamers
+      .container
+        .row
+          // Image
+          .col-12.col-lg-6
+            .card.bg-light.mb-3
+              .card-body
+                a(href='', data-toggle='modal', data-target='#productModal')
+                  img.img-fluid(src='https://dlcdnimgs.asus.com/websites/global/products/DwKSrXfJIFZVICcx/V1/img/prod_img/RT-AC5300-AC5300-Tri-Band-Wi-Fi-Gigabit-Router-For-Gamers.png')
+                  p.text-center Zoom
+                  strong More pictures
+                  .container
+                text All rights reserved
+          // Add to cart
+          .col-12.col-lg-6.add_to_cart_block
+            .card.bg-light.mb-3
+              .card-body
+                p.price 699.99 leva
+                p.price_discounted 943 leva
+                form(method='get', action='cart.html')
+                  .form-group
+                    label Quantity :
+                    .input-group.mb-3
+                      .input-group-prepend
+                        button.quantity-left-minus.btn.btn-danger.btn-number(type='button', data-type='minus', data-field='')
+                          i.fa.fa-minus
+                      input#quantity.form-control(type='text', name='quantity', min='1', max='100', value='1')
+                      .input-group-append
+                        button.quantity-right-plus.btn.btn-success.btn-number(type='button', data-type='plus', data-field='')
+                          i.fa.fa-plus
+                  a.btn.btn-success.btn-lg.btn-block.text-uppercase(href='cart.html')
+                    i.fa.fa-shopping-cart
+                    |  Add To Cart
+                  a.btn.btn-success.btn-lg.btn-block.text-uppercase.btn-warning(href='cart.html')
+                    i.fa.fa-shopping-cart
+                    |  Edit
+                  a.btn.btn-success.btn-lg.btn-block.text-uppercase.btn-danger(href='cart.html')
+                    i.fa.fa-shopping-cart
+                    |  Delete
+        .row
+          // Description
+          .col-12
+            .card.border-light.mb-3
+              .card-header.bg-primary.text-white.text-uppercase
+                i.fa.fa-align-justify
+                |  Description
+              .card-body
+                p.card-text
+                  | AC5300 Tri-Band Gigabit WiFi Gaming Router with MU-MIMO, supporting AiProtection network security powered by Trend Micro, AiMesh for mesh WiFi system, built-in WTFast game accelerator and Adaptive QoS.
+                p.card-text
+                  | Name: Asus AC5300
+                p.card-text
+                  | Frequency: Tri-band (dual 5 GHz, single 2.4 GHz)
+                p.card-text
+                  | Standart: 802.11ac 4x4
+                p.card-text
+                  | Range: atleast 20 meters
+      // Modal image
+      #productModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='productModalLabel', aria-hidden='true')
+        .modal-dialog.modal-lg(role='document')
+          .modal-content
+            .modal-header
+              h5#productModalLabel.modal-title Product title
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×
+            .modal-body
+              img.img-fluid(src='https://dlcdnimgs.asus.com/websites/global/products/DwKSrXfJIFZVICcx/V1/img/prod_img/RT-AC5300-AC5300-Tri-Band-Wi-Fi-Gigabit-Router-For-Gamers.png')
+            .modal-footer
+              button.btn.btn-secondary(type='button', data-dismiss='modal') Close

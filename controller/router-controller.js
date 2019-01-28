@@ -37,12 +37,8 @@ module.exports = function ({data}) {
 
 			req.checkBody('name', 'Name is required').notEmpty();
 			req.checkBody('tag', 'Tag is required').notEmpty();
-			req.checkBody('frequency', 'Frequency is not valid').notEmpty();
 			req.checkBody('standart', 'Standart is required').notEmpty();
-			req.checkBody('range', 'Range is required').notEmpty();
 			req.checkBody('ports', 'Ports are required').notEmpty();
-			req.checkBody('antennas', 'Antennas are not valid').notEmpty();
-			req.checkBody('manageability', 'Manageability is not valid').notEmpty();
 			req.checkBody('price', 'Price does not match').notEmpty();
 			let errors = req.validationErrors();
 			if (errors){
@@ -85,12 +81,8 @@ module.exports = function ({data}) {
 
 			req.checkBody('name', 'Name is required').notEmpty();
 			req.checkBody('tag', 'Tag is required').notEmpty();
-			req.checkBody('frequency', 'Frequency is not valid').notEmpty();
 			req.checkBody('standart', 'Standart is required').notEmpty();
-			req.checkBody('range', 'Range is required').notEmpty();
 			req.checkBody('ports', 'Ports are required').notEmpty();
-			req.checkBody('antennas', 'Antennas are not valid').notEmpty();
-			req.checkBody('manageability', 'Manageability is not valid').notEmpty();
 			req.checkBody('price', 'Price does not match').notEmpty();
 			let errors = req.validationErrors();
 			if (errors){

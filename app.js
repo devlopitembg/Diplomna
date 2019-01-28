@@ -91,24 +91,28 @@ app.get('/description', function (req, res) {
 });
 
 
-//
-
+//Router route
 app.get('/routers', controllers.routerController.getAll)
+
+//Router search
 app.get('/routers/search/:pattern', controllers.routerController.search)
 
-//
-
+//Register 
 app.get('/register', controllers.userController.registerGet);
 app.post('/register', controllers.userController.registerPost)
 
+//
 app.get('/login', controllers.loginController.loginGet);
 app.post('/login', controllers.loginController.loginPost);
 
+//
 app.get('/add',controllers.routerController.createGet);
 app.post('/add', controllers.routerController.createPost)
 
+//
 app.get('/router/delete/:id',controllers.routerController.delete)
 
+//
 app.get('/edit/:id', controllers.routerController.editGet)
 app.post('/edit', controllers.routerController.editPost)
 

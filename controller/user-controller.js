@@ -16,6 +16,7 @@ module.exports = function ({data, bcrypt}) {
 			res.render('register');
 		},
 		registerPost(req, res) {
+
 			// validation
 			const name = req.body.name;
 			const email = req.body.email;
@@ -35,6 +36,7 @@ module.exports = function ({data, bcrypt}) {
 				})
 				return
 			}
+			
 			// hash
 			bcrypt.genSalt(10, function(err, salt){
 				bcrypt.hash(password, salt, function(err, hash){
